@@ -24,25 +24,20 @@ app.configure ->
 
 global.render = (view,locals) -> (req,res) -> res.render(view,locals)
 
-app.get '/', render 'index', sample: sample
+getSongs = (req,res,next) ->
+  fs.readdir __dirname + '/data', (err, files) ->
+    res.local 'songs', files.sort()
+    next()
 
-app.get '/generate', (req,res) ->
-  fs.readFile __dirname + '/data/' + req.query.title, 'utf8', (err, data) ->
+app.get '/', getSongs, (req,res) ->
+  songTitle = req.query.title || res.local('songs')[0]
+  fs.readFile __dirname + '/data/' + songTitle, 'utf8', (err, data) ->
     sg = new SongGenerator data
     if req.query.key
       sg.changeKey(req.query.key)
     res.local 'song', sg
-    fs.readdir __dirname + '/data', (err, files) ->
-      res.local 'songs', files.sort()
-      res.local 'keys', SongGenerator.KEYS
-      res.render 'generate'
-
-app.post '/generate', (req,res) ->
-  sg = new SongGenerator(req.body)
-  res.local 'song', sg
-  fs.readdir __dirname + '/data', (err, files) ->
-    res.local 'songs', files
-    res.render 'generate'
+    res.local 'keys', SongGenerator.KEYS
+    res.render 'viewer'
 
 app.listen 3000
 console.log "Express server listening on port %d", 3000

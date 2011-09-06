@@ -6,12 +6,12 @@
   p Change Key: 
     select
       - each key in keys
-        option(selected= key == song.metadata.key, onclick="document.location='/generate?title=" + song.metadata.title + "&key=" + key.replace('#','sharp') + "'")= key
+        option(selected= key == song.metadata.key, onclick="document.location='/?title=" + song.metadata.title + "&key=" + key.replace('#','sharp') + "'")= key
   p: a(href='#', onclick='window.print()') Print Lead Sheet
   h2 Song List
   ul
   - each title in songs
-    li: a(href='/generate?title=' + title)= title
+    li: a(href='/?title=' + title)= title
 
 .sheet
   .title= song.metadata.title
