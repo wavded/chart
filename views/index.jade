@@ -1,0 +1,6 @@
+form(action='/generate', method='post')
+  ul
+    li: input(name='title', value='Amazed')
+    li: input(name='author', value='Jared Anderson')
+    li: textarea(name='song', cols=40, rows=40)= sample
+    li: button(type='submit') Generate

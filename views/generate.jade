@@ -1,0 +1,45 @@
+.side-panel
+  - if(song.metadata.youtube_id)
+    h2 YouTube
+    iframe.youtube(src='http://www.youtube.com/embed/#{song.metadata.youtube_id}')
+  h2 Actions
+  p Change Key: 
+    select
+      - each key in keys
+        option(selected= key == song.metadata.key, onclick="document.location='/generate?title=" + song.metadata.title + "&key=" + key.replace('#','sharp') + "'")= key
+  p: a(href='#', onclick='window.print()') Print Lead Sheet
+  h2 Song List
+  ul
+  - each title in songs
+    li: a(href='/generate?title=' + title)= title
+
+.sheet
+  .title= song.metadata.title
+  .author= song.metadata.author
+  .key Key of #{song.metadata.key}
+  .song
+    - var cols = song.columnSplit()
+    .column
+      - each section in cols.columnA
+        .section
+          - each line in section
+            - if(line.type == 'section')
+              .section-title= line.data
+            - else if(line.type == 'chord')
+              .chord= line.data
+            - else if(line.type == 'lyric')
+              .lyric= line.data
+            - else if(line.type == 'comment')
+              .comment= line.data
+    .column
+      - each section in cols.columnB
+        .section
+          - each line in section
+            - if(line.type == 'section')
+              .section-title= line.data
+            - else if(line.type == 'chord')
+              .chord= line.data
+            - else if(line.type == 'lyric')
+              .lyric= line.data
+            - else if(line.type == 'comment')
+              .comment= line.data

@@ -1,0 +1,78 @@
+@import 'nib'
+@css {
+  @import url(http://fonts.googleapis.com/css?family=Antic);
+}
+
+body
+  font-family: "Ubuntu"
+  font-size: 14px
+  margin: 0
+  padding: 0
+
+.side-panel
+  position: fixed
+  right: 0
+  top: 0
+  height: 100%
+  list-style: none
+  padding: 5px 15px
+  background-color: rgba( #ddd, 0.8 )
+
+.youtube
+  width: 260px
+  height: 200px
+
+.sheet
+  padding: 10px
+  height: 10in
+  width: 7.5in
+  overflow: hidden
+
+.title
+  font-weight: bold
+  text-align: center
+  font-size: 1.6em
+  margin: 20px 0 10px
+
+.author
+  text-align: center
+  margin-bottom: 10px
+
+.song
+  width: 100%
+
+.column
+  display: inline-block
+  vertical-align: top
+  width: 50%
+  height: 7.5in
+
+.section
+  display: block
+  width: 50%
+
+.section-title
+  font-weight: bold
+  color: #f00
+  font-size: 1.1em
+  margin: 20px 0 10px
+
+.comment
+  font-style: italic
+  color: #888
+  font-size: .8em
+
+.chord
+  font-family: "Monospace"
+  white-space: pre
+  color: #00f
+  font-weight: bold
+
+.lyric
+  font-family: "Monospace"
+  white-space: pre
+  font-weight: normal
+
+@media 'print'
+  .side-panel
+    display: none
