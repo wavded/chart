@@ -4,6 +4,7 @@ nib = require 'nib'
 fs = require 'fs'
 SongGenerator = require './lib/SongGenerator'
 sample = fs.readFileSync(__dirname + '/data/Amazed')
+port = 3000
 
 compile = (str, path, fn) -> stylus(str).set('filename', path).set('compress', true).use(nib())
 
@@ -22,6 +23,13 @@ app.configure ->
   app.use express.static(__dirname + '/public')
   app.use app.router
 
+app.configure 'development', () ->
+  app.use express.errorHandler({ dumpExceptions: true, showStack: true })
+
+app.configure 'production', () ->
+  port = 8006
+  app.use express.errorHandler()
+
 global.render = (view,locals) -> (req,res) -> res.render(view,locals)
 
 getSongs = (req,res,next) ->
@@ -39,5 +47,5 @@ app.get '/', getSongs, (req,res) ->
     res.local 'keys', SongGenerator.KEYS
     res.render 'viewer'
 
-app.listen 3000
-console.log "Express server listening on port %d", 3000
+app.listen port
+console.log "Express server listening on port %d", port
