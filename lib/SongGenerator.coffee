@@ -86,8 +86,8 @@ class SongGenerator
           index = keys.indexOf(match) + transposeBy
           if index < 0
             index = keysLength + index
-          else if index > keysLength
-            index = index + keysLength
+          else if index >= keysLength
+            index = index - keysLength
           keys[index]
 
     @metadata.key = key
