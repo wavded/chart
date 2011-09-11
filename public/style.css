@@ -12,6 +12,6 @@ body{font-family:"Ubuntu";font-size:14px;margin:0;padding:0}
 .comment{font-style:italic;color:#888;font-size:.8em}
 .chord{font-family:monospace;white-space:pre;color:#00f;font-weight:bold}
 .lyric{font-family:"Monospace";white-space:pre;font-weight:normal}
-@media 'print'{.sheet{padding:10px;margin:0}
+@media print{.sheet{padding:10px;margin:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 .side-panel{display:none}
 }
