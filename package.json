@@ -1,16 +1,13 @@
 {
   "author": "Marc Harter <wavded@gmail.com>",
   "name": "chart",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "url": ""
   },
   "main": "app.js",
   "directories": {
     "lib": "."
-  },
-  "scripts": {
-    "test": "vows"
   },
   "engines": {
     "node": "*"
