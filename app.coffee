@@ -2,6 +2,8 @@ express = require 'express'
 stylus  = require 'stylus'
 nib     = require 'nib'
 fs      = require 'fs'
+sets    = require './data/Sets'
+
 SongGenerator = require './lib/SongGenerator'
 port = 3000
 
@@ -41,7 +43,10 @@ app.get '/', getSongs, (req,res) ->
    fs.readFile __dirname + '/data/songs/' + songTitle, 'utf8', (err, data) ->
       sg = new SongGenerator data
       sg.changeKey(req.query.key) if req.query.key
+      setDate = Object.keys(sets).pop()
       res.local 'song', sg
+      res.local 'currentSetDate', setDate
+      res.local 'currentSet', sets[setDate]
       res.local 'keys', SongGenerator.KEYS
       res.render 'viewer'
 

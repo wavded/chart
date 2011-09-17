@@ -8,12 +8,16 @@ body
   font-size: 14px
   margin: 0
   padding: 0
+a
+  color: blue
+  text-decoration: none
 
 .side-panel
   position: fixed
   right: 0
   top: 0
   height: 100%
+  width: 260px
   list-style: none
   padding: 5px 15px
   border-left: 2px solid #ddd
@@ -75,6 +79,27 @@ body
   font-family: monospace
   white-space: pre
   font-weight: normal
+
+.set-indicator
+  border-bottom: 1px dotted #333
+  background-color: #ddd
+
+.set-indicator::after
+  content: attr(title)
+  position: absolute
+  right: 15px
+
+.dark
+  background-color: #111
+  color: #fff
+  .chord
+    color: #0ff
+  .side-panel
+    background-color: rgba( #333, 0.5 )
+  a
+    color: lightblue
+  .set-indicator
+    background-color: rgba( #333, 0.8 )
 
 @media print
   .sheet

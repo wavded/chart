@@ -8,10 +8,13 @@
       - each key in keys
         option(selected= key == song.metadata.key, onclick="document.location='/?title=" + song.metadata.title + "&key=" + key.replace('#','sharp') + "'")= key
   p: a(href='#', onclick='window.print()') Print Lead Sheet
+  p: a#theme(href='#') Use Low Light Theme
   h2 Song List
   ul
   - each title in songs
-    li: a(href='/?title=' + title)= title
+    - var inSet = currentSet.indexOf(title) > -1
+    li(class= inSet ? 'set-indicator' : '', title= currentSetDate): a(href='/?title=' + title)= title
+  p: small For the best experience, it's recommended that you a modern browser, like <a href='//firefox.com'>Firefox</a> or <a href='//google.com/chrome'>Chrome</a>.
 
 .sheet
   .title= song.metadata.title
