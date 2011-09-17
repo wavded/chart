@@ -9,6 +9,7 @@
         option(selected= key == song.metadata.key, onclick="document.location='/?title=" + song.metadata.title + "&key=" + key.replace('#','sharp') + "'")= key
   p: a(href='#', onclick='window.print()') Print Lead Sheet
   p: a#theme(href='#') Use Low Light Theme
+  p: a(href='//chordfind.com', target='_blank') Look Up A Chord
   h2 Song List
   ul
   - each title in songs
