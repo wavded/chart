@@ -7,6 +7,7 @@ module.exports =
    ]
    '2011-09-18': [
       'King Of Glory'
+      'Love Like Fire'
       'Great In All The Earth'
       'Revelation Song'
    ]
