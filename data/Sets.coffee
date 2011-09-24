@@ -11,3 +11,8 @@ module.exports =
       'Great In All The Earth'
       'Revelation Song'
    ]
+   '2011-09-25': [
+      'Forever Reign'
+      'Give Me Faith'
+      'Love Like Fire'
+   ]
