@@ -4,21 +4,23 @@
     iframe.youtube(src='http://www.youtube.com/embed/#{song.metadata.youtube_id}')
   h2 Actions
   p Change Key: 
-    select
+    select#keychange
       - each key in keys
-        option(selected= key == song.metadata.key, onclick="document.location='/?title=" + song.metadata.title + "&key=" + key.replace('#','sharp') + "'")= key
+        option(selected= key == song.metadata.key)= key
   p: a(href='#', onclick='window.print()') Print Lead Sheet
   p: a#theme(href='#') Use Low Light Theme
   p: a(href='//chordfind.com', target='_blank') Look Up A Chord
   h2 Song List
-  ul
-  - each title in songs
-    - var inSet = currentSet.indexOf(title) > -1
-    li(class= inSet ? 'set-indicator' : '', title= currentSetDate): a(href='/?title=' + title)= title
+  p
+    select#titlechange
+      - each title in songs
+        - var inSet = currentSet.indexOf(title) > -1
+        option(selected= title == song.metadata.title, class= inSet ? 'set-indicator' : '')= title
+
   p: small Site look funky?  I haven't tested all browsers/platforms, try <a href='//firefox.com'>Firefox</a> or <a href='//google.com/chrome'>Chrome</a>.
 
 .sheet
-  .title= song.metadata.title
+  #title.title= song.metadata.title
   .author= song.metadata.author
   .key Key of #{song.metadata.key}
   .song

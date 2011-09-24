@@ -13,7 +13,7 @@ a{color:#00f;text-decoration:none}
 .comment{font-style:italic;color:#888;font-size:.8em}
 .chord{font-family:monospace;white-space:pre;color:#00f;font-weight:bold}
 .lyric{font-family:monospace;white-space:pre;font-weight:normal}
-.set-indicator{border-bottom:1px dotted #333;background-color:#ddd}
+.set-indicator{background-color:#add8e6}
 .set-indicator::after{content:attr(title);position:absolute;right:15px}
 .dark{background-color:#111;color:#fff;}
 .dark .chord{color:#0ff}
