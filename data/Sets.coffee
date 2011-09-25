@@ -15,5 +15,5 @@ module.exports =
       'Forever Reign'
       'Give Me Faith'
       'Love Like Fire'
-      'Hosanna'
+      'Always'
    ]
