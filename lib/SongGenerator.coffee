@@ -43,11 +43,16 @@ class SongGenerator
         when ' ' then @songdata.push type: 'lyric',  data: data
         # Comment
         when ';' then @songdata.push type: 'comment', data: data
+        # Column Break
+        when '-' then @songdata.push type: 'break',  data: data
 
   _groupSections: () ->
     @sections = []
     currentSection = []
     for item in @songdata
+      if item.type is 'break'
+         @columnBreakIndex = @sections.length
+         continue
       if item.type is 'section'
         if currentSection?.length > 0
           @sections.push currentSection
@@ -57,12 +62,17 @@ class SongGenerator
     @sections
 
   columnSplit: () ->
-    median = Math.round(@lines.length / 2) + 5
     columnA = []
     columnB = []
-    for section in @sections
-      median -= section.length
-      if median > 0 then columnA.push(section) else columnB.push(section)
+    if @columnBreakIndex
+      for section, index in @sections
+        if index <= @columnBreakIndex then columnA.push(section) else columnB.push(section)
+
+    else
+      median = Math.round(@lines.length / 2) + 5
+      for section in @sections
+        median -= section.length
+        if median > 0 then columnA.push(section) else columnB.push(section)
 
     { columnA: columnA, columnB: columnB }
 
