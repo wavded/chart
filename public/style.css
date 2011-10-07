@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono);
 body{font-family:"Ubuntu","Verdana",sans-serif;font-size:12px;margin:0;padding:0}
 a{color:#00f;text-decoration:none}
 .side-panel{position:fixed;right:0;top:0;height:100%;width:260px;list-style:none;padding:5px 15px;border-left:2px solid #ddd;background-color:rgba(221,221,221,0.50)}
@@ -12,8 +12,8 @@ a{color:#00f;text-decoration:none}
 .section{display:block;width:50%}
 .section-title{font-weight:bold;color:#f00;font-size:1.1em;margin:20px 0 10px}
 .comment{font-style:italic;color:#888;font-size:.8em}
-.chord{font-family:"Droid Sans Mono",monospace;white-space:pre;color:#00f;font-weight:bold}
-.lyric{font-family:"Droid Sans Mono",monospace;white-space:pre;font-weight:normal}
+.chord{font-family:"Ubuntu Mono",monospace;white-space:pre;font-size:1.1em;color:#00f;font-weight:bold}
+.lyric{font-family:"Ubuntu Mono",monospace;font-size:1.2em;white-space:pre;font-weight:normal}
 .set-indicator{background-color:#add8e6}
 .set-indicator::after{content:attr(title);position:absolute;right:15px}
 .dark{background-color:#111;color:#fff;}
