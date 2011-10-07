@@ -23,3 +23,9 @@ module.exports =
       'Revelation Song'
       'Always'
    ]
+   '2011-10-09': [
+      'King Of Glory'
+      'Amazed (Kutless)'
+      'Forever Reign'
+      'Fire Fall Down'
+   ]
