@@ -17,3 +17,9 @@ module.exports =
       'Love Like Fire'
       'Always'
    ]
+   '2011-10-02': [
+      'Forever Changed'
+      'Hosanna'
+      'Revelation Song'
+      'Always'
+   ]
