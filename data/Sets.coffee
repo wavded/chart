@@ -29,3 +29,9 @@ module.exports =
       'Forever Reign'
       'Fire Fall Down'
    ]
+   '2011-10-09': [
+      'Amazed (Kutless)'
+      'Great In All The Earth'
+      'Give Me Faith'
+      'Revelation Song'
+   ]
