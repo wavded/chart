@@ -41,3 +41,14 @@ module.exports =
       'Savior King'
       'Praise Melody'
    ]
+   '2011-10-30': [
+      'To The Very End'
+      'Draw Me Close'
+      'Sweetly Broken'
+      'Forever Changed'
+      'Love Like Fire'
+      'Savior King'
+      'Give Me Faith'
+      'Revelation Song'
+      'Praise Melody'
+   ]
