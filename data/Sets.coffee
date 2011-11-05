@@ -52,3 +52,10 @@ module.exports =
       'Revelation Song'
       'Praise Melody'
    ]
+   '2011-11-06': [
+      'King Of Glory'
+      'Amazed (Kutless)'
+      'Always'
+      'To The Very End'
+      'Set A Fire'
+   ]
