@@ -56,16 +56,19 @@ module.exports =
       'King Of Glory'
       'Amazed (Kutless)'
       'Always'
+
       'To The Very End'
       'Set A Fire'
    ]
    '2011-11-13': [
-      'Great In All The Earth'
-      'How He Loves'
-      'Love Like Fire'
-      'Christ Is Risen'
-      'Fire Fall Down'
-      'Let It Rain'
-      'Set A Fire'
-      'Savior King'
+      'Great In All The Earth' # G
+      'How He Loves' # C
+      'Love Like Fire' # D
+
+      'Fire Fall Down' # D
+      'Christ Is Risen' # E
+      'Give Me Faith' # G
+      'Revelation Song' # D
+      'Set A Fire' # G
+      'Savior King' # D
    ]
