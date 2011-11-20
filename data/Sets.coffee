@@ -72,3 +72,9 @@ module.exports =
       'Set A Fire' # G
       'Savior King' # D
    ]
+   '2011-11-20': [
+      'Hosanna' # G
+      'Revelation Song' # D
+      'Christ Is Risen' # E
+      'Stronger' # F
+   ]
