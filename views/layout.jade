@@ -2,7 +2,7 @@
 html
   head
     title Chart
-    link(href='style.css', rel='stylesheet')
+    != css('style')
+    != js('util')
   body
     != body
-    script(src='util.js')
