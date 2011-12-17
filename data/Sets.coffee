@@ -78,3 +78,12 @@ module.exports =
       'Christ Is Risen' # E
       'Stronger' # F
    ]
+   '2011-12-18': [
+      'Great In All The Earth'
+      'King Of Glory'
+      'Love Like Fire'
+      'Set A Fire'
+      'Fire Fall Down'
+      'Break Every Chain'
+      'Praise Melody'
+   ]
