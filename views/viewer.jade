@@ -14,8 +14,7 @@
   p
     select#titlechange
       - each title in songs
-        - var inSet = currentSet.indexOf(title) > -1
-        option(selected= title == song.metadata.title, class= inSet ? 'set-indicator' : '')= title
+        option(selected= title == song.metadata.title)= title
 
   p: small Site look funky?  I haven't tested all browsers/platforms, try <a href='//firefox.com'>Firefox</a> or <a href='//google.com/chrome'>Chrome</a>.
 

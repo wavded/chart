@@ -1,16 +1,16 @@
 .PHONY: deploy_live watch
 project=chart
 path=/var/www/chart
-instance=\033[36;01m${project}\033[m
+instance=\033[31;01m${project}\033[m
 
 all: watch
 
 deploy_live: server = sawyer@ubox1
 deploy_live:
 	@coffee -c app.coffee
-	@rsync -az --exclude=".git" --exclude='node_modules' --delete * ${server}:${path}
+	@rsync -az --exclude=".git" --exclude='node_modules/**/build' --delete --delete-excluded * ${server}:${path}
 	@echo " ${instance} | copied files to ${server}"
-	@ssh ${server} "cd ${path} && rm -rf node_modules && npm install"
+	@ssh ${server} "cd ${path} && npm rebuild"
 	@echo " ${instance} | updated npm packages on ${server}"
 	@ssh -t ${server} "sudo cp -f ${path}/upstart.conf /etc/init/${project}.conf"
 	@echo " ${instance} | setting up upstart on ${server}";

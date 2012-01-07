@@ -2,7 +2,6 @@ express = require 'express'
 global.app = express.createServer()
 
 FS      = require 'fs'
-sets    = require './data/Sets'
 assets  = require 'connect-assets'
 port    = 3000
 
@@ -11,7 +10,7 @@ SongGenerator = require './lib/SongGenerator'
 app.set 'views', __dirname + '/views'
 
 app.configure 'development', -> app.use assets()
-app.configure 'production',  -> port = 8006; app.use assets( build: true, buildDir: false, detectChanges: false )
+app.configure 'production',  -> port = 8006; app.use assets( build: true, buildDir: false, src: __dirname + '/assets', detectChanges: false )
 
 app.use express.bodyParser()
 app.use express.methodOverride()
@@ -29,10 +28,7 @@ app.get '/', getSongs, (req,res) ->
    FS.readFile __dirname + '/data/songs/' + songTitle, 'utf8', (err, data) ->
       sg = new SongGenerator data
       sg.changeKey(req.query.key) if req.query.key
-      setDate = Object.keys(sets).pop()
       res.local 'song', sg
-      res.local 'currentSetDate', setDate
-      res.local 'currentSet', sets[setDate]
       res.local 'keys', SongGenerator.KEYS
       res.render 'viewer.jade'
 
