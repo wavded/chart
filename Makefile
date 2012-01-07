@@ -7,6 +7,7 @@ all: watch
 
 deploy_live: server = sawyer@ubox1
 deploy_live:
+	@coffee -c app.coffee
 	@rsync -az --exclude=".git" --exclude='node_modules' --delete * ${server}:${path}
 	@echo " ${instance} | copied files to ${server}"
 	@ssh ${server} "cd ${path} && rm -rf node_modules && npm install"
@@ -15,6 +16,7 @@ deploy_live:
 	@echo " ${instance} | setting up upstart on ${server}";
 	@ssh -t ${server} "sudo restart ${project}"
 	@echo " ${instance} | restarting app on ${server}";
+	@rm app.js
 
 watch:
 	@if ! which supervisor > /dev/null; then echo "supervisor required, installing..."; sudo npm install -g supervisor; fi

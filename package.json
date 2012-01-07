@@ -11,12 +11,14 @@
     "node": "0.6.x"
   },
   "dependencies": {
-    "canvas": "0.8.1",
+    "canvas": "0.8.3",
     "connect-assets": "2.1.6",
-    "express": "2.5.1",
-    "jade": "0.19.0",
+    "express": "2.5.4",
+    "jade": "0.20.0",
     "nib": "0.3.1",
-    "stylus": "0.19.8"
+    "stylus": "0.22.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+     "coffee-script": "1.2.0"
+  }
 }
