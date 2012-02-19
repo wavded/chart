@@ -12,6 +12,7 @@
 var canvas = require('./bindings')
   , Context2d = canvas.CanvasRenderingContext2d
   , CanvasGradient = canvas.CanvasGradient
+  , CanvasPattern = canvas.CanvasPattern
   , ImageData = canvas.ImageData
   , PixelArray = canvas.CanvasPixelArray;
 
@@ -99,6 +100,20 @@ var parseFont = exports.parseFont = function(str){
 };
 
 /**
+ * Create a pattern from `Image` or `Canvas`.
+ *
+ * @param {Image|Canvas} image
+ * @param {String} repetition
+ * @return {CanvasPattern}
+ * @api public
+ */
+
+Context2d.prototype.createPattern = function(image, repetition){
+  // TODO Use repetition (currently always 'repeat')
+  return new CanvasPattern(image);
+};
+
+/**
  * Create a linear gradient at the given point `(x0, y0)` and `(x1, y1)`.
  *
  * @param {Number} x0
@@ -150,7 +165,9 @@ Context2d.prototype.setTransform = function(){
  */
 
 Context2d.prototype.__defineSetter__('fillStyle', function(val){
-  if (val instanceof CanvasGradient) {
+  if (!val) return;
+  if ('CanvasGradient' == val.constructor.name 
+    || 'CanvasPattern' == val.constructor.name) {
     this.lastFillStyle = val;
     this._setFillPattern(val);
   } else if ('string' == typeof val) {
@@ -176,7 +193,9 @@ Context2d.prototype.__defineGetter__('fillStyle', function(){
  */
 
 Context2d.prototype.__defineSetter__('strokeStyle', function(val){
-  if (val instanceof CanvasGradient) {
+  if (!val) return;
+  if ('CanvasGradient' == val.constructor.name 
+    || 'CanvasPattern' == val.constructor.name) {
     this.lastStrokeStyle = val;
     this._setStrokePattern(val);
   } else if ('string' == typeof val) {
@@ -204,6 +223,7 @@ Context2d.prototype.__defineGetter__('strokeStyle', function(){
  */
 
 Context2d.prototype.__defineSetter__('font', function(val){
+  if (!val) return;
   if ('string' == typeof val) {
     var font;
     if (font = parseFont(val)) {
@@ -235,6 +255,7 @@ Context2d.prototype.__defineGetter__('font', function(){
  */
 
 Context2d.prototype.__defineSetter__('textBaseline', function(val){
+  if (!val) return;
   var n = baselines.indexOf(val);
   if (~n) {
     this.lastBaseline = val;
@@ -315,7 +336,7 @@ Context2d.prototype.getImageData = function(x, y, width, height){
  */
 
 Context2d.prototype.createImageData = function(width, height){
-  if (width instanceof ImageData) {
+  if ('ImageData' == width.constructor.name) {
     height = width.height;
     width = width.width;
   }
