@@ -5,17 +5,17 @@ instance=\033[31;01m${project}\033[m
 
 all: watch
 
-deploy_live: server = sawyer@ubox1
+deploy_live: server = sawyer@172.25.20.120
 deploy_live:
 	@coffee -c app.coffee
 	@rsync -az --exclude=".git" --exclude='node_modules/**/build' --delete --delete-excluded * ${server}:${path}
-	@echo " ${instance} | copied files to ${server}"
+	@echo -e " ${instance} | copied files to ${server}"
 	@ssh ${server} "cd ${path} && npm rebuild"
-	@echo " ${instance} | updated npm packages on ${server}"
+	@echo -e " ${instance} | updated npm packages on ${server}"
 	@ssh -t ${server} "sudo cp -f ${path}/upstart.conf /etc/init/${project}.conf"
-	@echo " ${instance} | setting up upstart on ${server}";
+	@echo -e " ${instance} | setting up upstart on ${server}";
 	@ssh -t ${server} "sudo restart ${project}"
-	@echo " ${instance} | restarting app on ${server}";
+	@echo -e " ${instance} | restarting app on ${server}";
 	@rm app.js
 
 watch:

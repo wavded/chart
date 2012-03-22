@@ -10,7 +10,7 @@ SongGenerator = require './lib/SongGenerator'
 app.set 'views', __dirname + '/views'
 
 app.configure 'development', -> app.use assets()
-app.configure 'production',  -> port = 8006; app.use assets( build: true, buildDir: false, src: __dirname + '/assets', detectChanges: false )
+app.configure 'production',  -> port = 8500; app.use assets( build: true, buildDir: false, src: __dirname + '/assets', detectChanges: false )
 
 app.use express.bodyParser()
 app.use express.methodOverride()
