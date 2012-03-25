@@ -13,10 +13,10 @@
     "node": "0.6.x"
   },
   "dependencies": {
-    "canvas": "0.10.2",
-    "connect-assets": "2.1.8",
+    "canvas": "0.10.3",
+    "connect-assets": "2.1.9",
     "express": "2.5.8",
-    "jade": "0.20.3",
+    "jade": "0.22.0",
     "nib": "0.3.2",
     "stylus": "0.24.0"
   },
