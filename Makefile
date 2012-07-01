@@ -12,14 +12,13 @@ deploy_live:
 	@rsync -az --exclude=".git" --exclude='node_modules/**/build' --delete --delete-excluded * ${serverA}:${path}
 	@rsync -az --exclude=".git" --exclude='node_modules/**/build' --delete --delete-excluded * ${serverB}:${path}
 	@echo -e " ${instance} | copied files to ${serverA} and ${serverB}"
-	@ssh ${serverA} "cd ${path} && npm rebuild"
-	@ssh ${serverB} "cd ${path} && npm rebuild"
-	@echo -e " ${instance} | updated npm packages on ${serverA} and ${serverB}"
 	@ssh -t ${serverA} "sudo cp -f ${path}/upstart.conf /etc/init/${project}.conf"
 	@ssh -t ${serverB} "sudo cp -f ${path}/upstart.conf /etc/init/${project}.conf"
 	@echo -e " ${instance} | setting up upstart on ${serverA} and ${serverB}";
-	@ssh -t ${serverA} "sudo restart ${project}"
-	@ssh -t ${serverB} "sudo restart ${project}"
+	-ssh -t ${serverA} "sudo stop ${project}"
+	@ssh -t ${serverA} "sudo start ${project}"
+	-ssh -t ${serverB} "sudo stop ${project}"
+	@ssh -t ${serverB} "sudo start ${project}"
 	@echo -e " ${instance} | restarting app on ${serverA} and ${serverB}";
 	@rm app.js
 
