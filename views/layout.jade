@@ -1,8 +1,9 @@
 !!! 5
 html
-  head
-    title Chart
-    != css('style')
-    != js('util')
-  body
-    != body
+   head
+      title Chart
+      link(href='css/style.css', rel='stylesheet')
+      script(src='jam/require.js')
+      script(src='js/util.js')
+   body
+      != body
