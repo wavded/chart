@@ -19,7 +19,3 @@ deploy:
 	@-ssh ${serverB} "sudo stop ${project}"
 	@ssh ${serverB} "sudo start ${project}"
 	@printf " ${instance} | restarted apps on servers\n"
-
-watch:
-	@if ! which supervisor > /dev/null; then echo "supervisor required, installing..."; sudo npm install -g supervisor; fi
-	@supervisor -w app.js,lib,views,assets,data app.js
